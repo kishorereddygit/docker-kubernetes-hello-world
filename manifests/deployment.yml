@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: kishorereddygitdockerkuberneteshelloworld 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kishorereddygitdockerkuberneteshelloworld
+  template:
+    metadata:
+      labels:
+        app: kishorereddygitdockerkuberneteshelloworld 
+    spec:
+      containers:
+        - name: kishorereddygitdockerkuberneteshelloworld 
+          image: springkishoreacr.azurecr.io/kishorereddygitdockerkuberneteshelloworld
+          ports:
+          - containerPort: 8080
