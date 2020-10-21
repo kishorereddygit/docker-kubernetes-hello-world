@@ -1,6 +1,11 @@
-- task: JenkinsQueueJob@2
+- task: Maven@3
   inputs:
-    jobName: 
-    captureConsole: true
-    capturePipeline: true
-    isParameterizedJob: false
+    mavenPomFile: 'pom.xml'
+    goals: 'clean install'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
