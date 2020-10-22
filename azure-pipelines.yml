@@ -9,3 +9,11 @@
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+
+- task: Docker@2
+  inputs:
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+- task: KubernetesManifest@0
+  inputs:
+    action: 'deploy'
