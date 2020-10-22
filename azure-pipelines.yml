@@ -1,19 +1,17 @@
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean install'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    codeCoverageToolOption: 'Cobertura'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
-    sonarQubeRunAnalysis: false
-
+    sonarQubeRunAnalysis: true
+    isJacocoCoverageReportXML: true
+    sqMavenPluginVersionChoice: 'latest'
 - task: Docker@2
   inputs:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-- task: KubernetesManifest@0
-  inputs:
-    action: 'deploy'
